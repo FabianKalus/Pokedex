@@ -1,3 +1,4 @@
+// sometimes there are special pokemon evolution with stones or stuff like this, that is not written in the API. So i add a list per hand in the variables
 let allEvols = [];
 let secondEvols = [];
 let allPokemonSrc = [];
@@ -16,6 +17,7 @@ let open_nameCurrentPokemonEvolLevel;
 let pre_pre_evol_name;
 let pre_pre_evol_level;
 
+// load the evolutions
 async function loadevol() {
     let evolUrl = 'https://pokeapi.co/api/v2/evolution-chain?limit=1000offset=0';
     let allResponse = await fetch(evolUrl);
@@ -26,6 +28,7 @@ async function loadevol() {
     }
 }
 
+// render pokemon evolution and the information of the evolution
 async function evolOne(oneUrl) {
     let url = oneUrl;
     let response = await fetch(url);
@@ -45,6 +48,7 @@ async function evolOne(oneUrl) {
     }
 }
 
+// load the src of all pokemon
 async function loadAllPokemonSrc() {
     let allUrlSrc = 'https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0';
     let allResponseSrc = await fetch(allUrlSrc);
@@ -56,6 +60,7 @@ async function loadAllPokemonSrc() {
     }
 }
 
+// load the image of the pokemon evolution
 async function loadPokemonSrc(oneUrlSrc) {
     let urlSrc = oneUrlSrc;
     let responseSrc = await fetch(urlSrc);
@@ -66,6 +71,7 @@ async function loadPokemonSrc(oneUrlSrc) {
     allPokemonSrc.push([srcname, srcSrc, srcTyp]);
 }
 
+// checks the evolutions and if there are special evolution like stones needed or some other specials
 function open_render_pokemon_evolution() {
     let evolution_container = document.getElementById('open-content-bottom-content');
     evolution_container.innerHTML = '';
@@ -88,6 +94,7 @@ function open_render_pokemon_evolution() {
     change_evol_name_in_big(openCurrentPokemon['name']);
 }
 
+// checks if there is one evolutions
 function checkEvol(basename) {
     for (i = 0; i < allEvols.length; i++) {
         if (basename == allEvols[i][0]) {
@@ -101,6 +108,7 @@ function checkEvol(basename) {
     }
 }
 
+// checks if there is more than one evolutions
 function check_second_evol(basename) {
     for (i = 0; i < secondEvols.length; i++) {
         if (basename == secondEvols[i][0]) {
@@ -117,6 +125,7 @@ function check_second_evol(basename) {
     }
 }
 
+// checks if the pokemon is the second evolution, to hide the evolution arrows in the open pokemon field
 function check_no_more_evol(basename) {
     for (j = 0; j < secondEvols.length; j++) {
         if (basename == secondEvols[j][1]) {
@@ -127,6 +136,7 @@ function check_no_more_evol(basename) {
     }
 }
 
+// checks if the pokemon has only one evolution, to hide the evolution arrows in the open pokemon field
 function check_only_one_evol(basename) {
     for (i = 0; i < allEvols.length; i++) {
         if (basename == allEvols[i][1]) {
@@ -145,6 +155,7 @@ function check_only_one_evol(basename) {
     }
 }
 
+// HTML code for the evolution pokemon
 function open_render_pokemon_evolutionHTMLCode() {
     document.getElementById('open-content-bottom-content').innerHTML += `
     <div class="complete-evolution-container" id="complete-evolution-container">
@@ -171,6 +182,7 @@ function open_render_pokemon_evolutionHTMLCode() {
     </div>`;
 }
 
+// check if the pokemon has an pre-evolution
 function add_pre_pre_evol(basename) {
     for (i = 0; i < secondEvols.length; i++) {
         if (basename == secondEvols[i][0] && basename !== 'chansey') {
@@ -180,6 +192,7 @@ function add_pre_pre_evol(basename) {
     }
 }
 
+// render the evolution image
 function render_evolution_image() {
     for (let i = 0; i < allPokemonSrc.length; i++) {
         if (open_nameCurrentPokemon == allPokemonSrc[i][0]) {
@@ -194,6 +207,7 @@ function render_evolution_image() {
     }
 }
 
+// HTML code for pokemon with no evolution
 function open_render_pokemon_no_evolutionHTMLCode(evolution_container) {
     evolution_container.innerHTML = `
     <div id="no-evolution-container" class="no-evolution-container">
@@ -201,6 +215,7 @@ function open_render_pokemon_no_evolutionHTMLCode(evolution_container) {
     </div>`
 }
 
+// special evolutions
 function check_specials(basename) {
     check_nextGeneration(basename);
     check_moon_stone(basename);
@@ -212,6 +227,7 @@ function check_specials(basename) {
     check_eevee(basename);
     check_jigglypuff(basename);
 }
+
 
 function check_jigglypuff(basename) {
     if (basename == 'jigglypuff' || basename == 'clefairy') {
@@ -301,6 +317,8 @@ function check_eevee(basename) {
     }
 }
 
+
+// uppercase the first letter of the pokemon evolution
 function change_evol_name_in_big(basename) {
     if (document.getElementById('pre-evolution-name')) {
         if (basename !== 'eevee' && basename !== 'vaporeon' && basename !== 'jolteon' && basename !== 'flareon') {

@@ -5,6 +5,7 @@ let game_mode = 'off';
 
 let allowNextPokemons = false;
 
+// oninit function
 function loadPage() {
     document.getElementById('all-pokemon-container').innerHTML = '';
     loadAllPokemon(0, 20);
@@ -14,6 +15,7 @@ function loadPage() {
     game_mode = 'off';
 }
 
+// load all pokemon
 async function loadAllPokemon(firstnumber, lastnumber) {
     let allUrl = 'https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0';
     let allResponse = await fetch(allUrl);
@@ -26,6 +28,7 @@ async function loadAllPokemon(firstnumber, lastnumber) {
     allowNextPokemons = true;
 }
 
+// render the pokemon container by scrolling
 function render_by_scroll() {
     if ((window.innerHeight + window.scrollY + 400) >= document.body.offsetHeight && allowNextPokemons) {
         allowNextPokemons = false;
@@ -60,14 +63,17 @@ function render_by_scroll() {
     }
 }
 
+// add scrol eventlistener
 window.addEventListener('scroll', () => {
     render_by_scroll()
 })
 
+// scroll to top with the pikachu right / bottom corner
 function scroll_to_top() {
     window.scrollTo(0, 0);
 }
 
+// load one pokemon
 async function loadPokemon(oneUrl, x) {
     let url = oneUrl;
     let response = await fetch(url);
@@ -83,6 +89,7 @@ async function loadPokemon(oneUrl, x) {
     translateToGerman(x);
 }
 
+// HMTL code of one pokemon
 function renderOnePokemonHTML(x) {
     document.getElementById('all-pokemon-container').innerHTML +=
         `
@@ -99,6 +106,7 @@ function renderOnePokemonHTML(x) {
     </div>`
 }
 
+// render pokemon informations
 function renderPokemonInfo(x) {
     changeNameInBig(x);
     renderID(x);
@@ -106,12 +114,14 @@ function renderPokemonInfo(x) {
     document.getElementById(`pokemonImage${x}`).src = currentPokemon['sprites']['other']['official-artwork']['front_default'];
 }
 
+// uppercase first letter in name
 function changeNameInBig(x) {
     let pokemonName = currentPokemon['name'];
     let NameInBig = pokemonName[0].toUpperCase() + pokemonName.slice(1);
     document.getElementById(`pokemonName${x}`).innerHTML = NameInBig;
 }
 
+// render ID
 function renderID(x) {
     let pokemonId = currentPokemon['id'];
     pokemonId = pokemonId.toString();
@@ -124,6 +134,7 @@ function renderID(x) {
     document.getElementById(`pokemonId${x}`).innerHTML = '#' + pokemonId;
 }
 
+// render type
 function renderType(x) {
     let pokemonTypes = currentPokemon['types'];
     document.getElementById(`pokemonType${x}`).innerHTML = '';
@@ -137,6 +148,7 @@ function renderType(x) {
     }
 }
 
+// render background-color defined by type
 function renderBackgroundcolor(x, t) {
     let mainType = currentPokemon['types'][t]['type']['name'];
     if (mainType == 'grass') {
@@ -186,6 +198,7 @@ function renderBackgroundcolor(x, t) {
     }
 }
 
+// render background-color defined by type and image
 function renderBackgroundcolorAndImage(x) {
     let mainType = currentPokemon['types'][0]['type']['name'];
     if (mainType == 'grass') {
@@ -260,6 +273,8 @@ function renderBackgroundcolorAndImage(x) {
     }
 }
 
+
+// add eventlistener that the searchfield is listen to "enter"
 document.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
         if (game_mode == 'off') {

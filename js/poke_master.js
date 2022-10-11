@@ -39,7 +39,7 @@ let text_text4_german = "Du kannst mir jede Frage nur einmal stellen. Viel Spah�
 
 
 
-
+// load the pokemon master game
 async function load_pokemaster() {
     game_mode = 'on';
     await loadAllPokemonSrc();
@@ -51,6 +51,7 @@ async function load_pokemaster() {
 
 }
 
+// created a list of pokemon that are not anwsered
 function create_pokemon_not_answered_list() {
     if (game_page_language == 'german')
         for (let x = 0; x < 151; x++) {
@@ -65,6 +66,7 @@ function create_pokemon_not_answered_list() {
     }
 }
 
+// load the number of pokemon how, defined by the function because otherwise the loadingtime was too long
 async function game_loadAllPokemon(start, end) {
     let game_allUrl = 'https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0';
     let game_allResponse = await fetch(game_allUrl);
@@ -75,6 +77,7 @@ async function game_loadAllPokemon(start, end) {
     }
 }
 
+// render the rest images that are over the pokemon, that are not answered
 async function rest_render_overlay_images() {
     for (let oi = 0; oi < 80; oi++) {
         document.getElementById('game-all-pokemon-container').innerHTML += `
@@ -86,6 +89,7 @@ async function rest_render_overlay_images() {
     }
 }
 
+// load the pokemon for pokemaster
 async function game_loadPokemon(game_oneUrl, x) {
     let game_url = game_oneUrl;
     let game_response = await fetch(game_url);
@@ -101,6 +105,7 @@ async function game_loadPokemon(game_oneUrl, x) {
     translateToGerman(x);
 }
 
+// HTML code for the pokemon in pokemaster
 function game_renderOnePokemonHTML(x) {
     document.getElementById(`overlay-container${x}`).innerHTML =
         `
@@ -118,6 +123,7 @@ function game_renderOnePokemonHTML(x) {
     `;
 }
 
+// render the images that are over the pokemon, that are not answered
 function render_overlay_images() {
     for (let oi = 80; oi < 151; oi++) {
         document.getElementById('game-all-pokemon-container').innerHTML += `
@@ -129,6 +135,7 @@ function render_overlay_images() {
     }
 }
 
+// render the pokemon-info for pokemaster
 function game_renderPokemonInfo(x) {
     game_changeNameInBig(x);
     game_renderID(x);
@@ -136,12 +143,14 @@ function game_renderPokemonInfo(x) {
     document.getElementById(`pokemonImage${x}`).src = game_currentPokemon['sprites']['other']['official-artwork']['front_default'];
 }
 
+// uppercase the first letter in the pokemon name
 function game_changeNameInBig(x) {
     let pokemonName = game_currentPokemon['name'];
     let NameInBig = pokemonName[0].toUpperCase() + pokemonName.slice(1);
     document.getElementById(`pokemonName${x}`).innerHTML = NameInBig;
 }
 
+// render the id of the pokemon in pokemaster
 function game_renderID(x) {
     let pokemonId = game_currentPokemon['id'];
     pokemonId = pokemonId.toString();
@@ -154,6 +163,7 @@ function game_renderID(x) {
     document.getElementById(`pokemonId${x}`).innerHTML = '#' + pokemonId;
 }
 
+// render the type of the pokemon in pokemaster
 function game_renderType(x) {
     let pokemonTypes = game_currentPokemon['types'];
     document.getElementById(`pokemonType${x}`).innerHTML = '';
@@ -167,6 +177,7 @@ function game_renderType(x) {
     };
 }
 
+// render the background-color of the pokemon type II if there is more than one type
 function game_renderBackgroundcolor(x, t) {
     let mainType = game_currentPokemon['types'][t]['type']['name'];
     if (mainType == 'grass') {
@@ -216,6 +227,7 @@ function game_renderBackgroundcolor(x, t) {
     }
 }
 
+// render the background-color of the pokemon and the first typ I in pokemaster defined by the first typ
 function game_renderBackgroundcolorAndImage(x) {
     let mainType = game_currentPokemon['types'][0]['type']['name'];
     if (mainType == 'grass') {
@@ -291,12 +303,13 @@ function game_renderBackgroundcolorAndImage(x) {
 }
 
 //search game-master
-
+// description in the function
 async function game_search_pokemon() {
     let search_field = document.getElementById('game-searchfield');
     let search_field_value = search_field.value.toLowerCase();
     let find_pokemon = false;
 
+    // checks the rest of the life´s you have and let the life´s disaprear if the answer was false
     for (let wh = 1; wh < 6; wh++) {
         if (document.getElementById(`white-board${wh}`).classList.contains('d-none') == false) {
             document.getElementById(`white-board${wh}`).classList.add('d-none');
@@ -304,23 +317,36 @@ async function game_search_pokemon() {
         }
     }
 
+    // checks language
     if (game_page_language == 'german') {
         if (search_field.value.length > 0) {
+            // checks if the answer is already given
             if (check_right_answers(search_field_value)) {
                 alert('Dieses Pokemon hast du bereits genannt');
                 return;
+                // check the answer and gives positiv feedback
             } else {
                 for (let e = 0; e < germanPokemon.length; e++) {
                     if (search_field_value == germanPokemon[e].toLowerCase()) {
+                        // overlay image disappear
                         document.getElementById(`overlayimage-container${e}`).style.display = 'none';
+                        // pushes the given answer to the right_answers so the system can check, if the answer was already give
                         right_answers.push(search_field_value);
+                        // empty the searchfield
                         search_field.value = '';
+                        // change the questionmark-img to the pokemonimg
                         document.getElementById('solution-questionmark').src = allPokemonSrc[e][1];
+                        // little timeout before the pokemon start moving down
                         setTimeout(wait, 500);
+                        // after pokemon moves down the img changes again to question mark and moves down
                         setTimeout(change_image_in_questionmark, 2500);
+                        // list of types that are not answered, it´s jused by the system for the jokers
                         types_not_answered(e);
+                        // list of names that are not answered, it´s jused by the system for the jokers
                         names_not_answered(e);
+                        // load the rest of the pokemon
                         game_loadAllPokemon(e, e + 1);
+                        // checks if the game is finished
                         check_winning();
                         return;
                     }
@@ -335,6 +361,7 @@ async function game_search_pokemon() {
         }
         find_pokemon = false;
     }
+    // same in englisch
     if (game_page_language == 'english') {
         if (search_field.value.length > 0) {
             if (check_right_answers(search_field_value)) {
@@ -349,8 +376,10 @@ async function game_search_pokemon() {
                         document.getElementById('solution-questionmark').src = allPokemonSrc[e][1];
                         setTimeout(wait, 500);
                         setTimeout(change_image_in_questionmark, 2500);
-                        pokemon_not_answered(search_field_value);
+                        pokemon_not_answered(e);
                         types_not_answered(e);
+                        names_not_answered(e);
+                        game_loadAllPokemon(e, e + 1);
                         check_winning();
                         return;
                     }
@@ -367,17 +396,27 @@ async function game_search_pokemon() {
     }
 }
 
+// check if game ist finished
 function check_winning() {
-    if (pokemon_not_answered_list_german.length == 0) {
-        document.getElementById('win-container').classList.remove('d-none');
-        document.getElementById('body2').style.overflow = 'hidden';
+    if (game_page_language == 'german') {
+        if (pokemon_not_answered_list_german.length == 0) {
+            document.getElementById('win-container').classList.remove('d-none');
+            document.getElementById('body2').style.overflow = 'hidden';
+        }
+    } else {
+        if (pokemon_not_answered_list.length == 0) {
+            document.getElementById('win-container').classList.remove('d-none');
+            document.getElementById('body2').style.overflow = 'hidden';
+        }
     }
 }
 
+// after pokemon moves down the img changes again to question mark and moves down
 function wait() {
     document.getElementById('solution-questionmark').style.animation = 'movedown 2s linear';
 }
 
+  // list of names that are not answered, it´s jused by the system for the jokers
 function names_not_answered(e) {
     let answered_name = germanPokemon[e];
     for (let na = 0; na < pokemon_not_answered_list_german.length; na++)
@@ -387,6 +426,7 @@ function names_not_answered(e) {
         }
 }
 
+  // list of types that are not answered, it´s jused by the system for the jokers
 function types_not_answered(e) {
     let answered_type = allPokemonSrc[e][2];
     for (let ty = 0; ty < pokemon_first_type_list.length; ty++)
@@ -396,6 +436,7 @@ function types_not_answered(e) {
         }
 }
 
+// joker that gives the number of all pokemon of this type back, that aren´t answered
 function joker_one_type(x) {
     let type_element = 0;
     let number_for_element = Math.floor(Math.random() * 15);
@@ -458,6 +499,7 @@ function joker_one_type(x) {
     used_joker(x);
 }
 
+// so you can just use one joker at once
 function just_one_joker() {
     document.getElementById('white-board1').classList.add('d-none');
     document.getElementById('white-board2').classList.add('d-none');
@@ -472,6 +514,7 @@ function just_one_joker() {
     document.getElementById('help-white-board5').classList.add('d-none');
 }
 
+// gives alle types of the pokemons that aren`t answered
 function joker_all_types(x) {
     for (let jt = 0; jt < pokemon_first_type_list.length; jt++) {
         if (pokemon_first_type_list[jt] == 'grass') {
@@ -542,6 +585,7 @@ function joker_all_types(x) {
     used_joker(x);
 }
 
+// checks if the pokemon is not answered yet
 function pokemon_not_answered(search_field_value) {
     for (let p = 0; p < pokemon_not_answered_list.length; p++) {
         if (search_field_value == pokemon_not_answered_list[p]) {
@@ -550,6 +594,7 @@ function pokemon_not_answered(search_field_value) {
     }
 }
 
+// joker that gives the user some letters of a random pokemon that is missing
 function joker_left_pokemon_name(x) {
     let random_name;
     if (game_page_language == 'german') {
@@ -573,11 +618,12 @@ function joker_left_pokemon_name(x) {
     used_joker(x);
 }
 
+// disabled the joker after use
 function used_joker(x) {
     document.getElementById(`joker-image-container${x}`).classList.remove('d-none');
 }
 
-
+// checks if the answer is correct, but it could be that the answer is correct but the name was already called
 function check_right_answers(search_field_value) {
     for (let a = 0; a < right_answers.length; a++) {
         if (right_answers[a] == search_field_value) {
@@ -586,11 +632,13 @@ function check_right_answers(search_field_value) {
     }
 }
 
+// change the questionsmark img to the pokemon img
 function change_image_in_questionmark() {
     document.getElementById('solution-questionmark').src = './img/question-mark-gd91fa0596_640.png';
     document.getElementById('solution-questionmark').style.animation = '';
 }
 
+// by incorrect answer the user looses a life, and it´s a little bit animated
 function lose_life() {
     lifes_left = lifes_left - 1;
     if (lifes_left < 2) {
@@ -609,14 +657,15 @@ function lose_life() {
         setTimeout(lose_life_animation, 2400);
         document.getElementById('solution-questionmark').src = './img/abort-g901382f4b_640.png';
     }
-
 }
 
+// animation for losing life
 function lose_life_animation() {
     document.getElementById(`life-image-filled${lifes_left}`).classList.toggle('d-none');
     document.getElementById(`life-image-unfilled${lifes_left}`).classList.toggle('d-none');
 }
 
+// change the language to english
 function game_change_to_english() {
     game_page_language = 'english';
     document.getElementById('choose-language-container').classList.add('d-none');
@@ -625,6 +674,7 @@ function game_change_to_english() {
 
 }
 
+// change the language to german
 function game_change_to_german() {
     game_page_language = 'german';
     document.getElementById('choose-language-container').classList.add('d-none');
@@ -632,6 +682,7 @@ function game_change_to_german() {
     show_typing();
 }
 
+// typing effect for the intro
 function show_typing() {
     let intro_white = document.getElementById('intro-white-p');
     if (game_page_language == 'german') {
@@ -657,6 +708,7 @@ function show_typing() {
     }
 }
 
+// goes to the next text field
 function next_text() {
     let intro_white = document.getElementById('intro-white-p');
     let intro_container = document.getElementById('intro-container');
@@ -703,6 +755,7 @@ function next_text() {
     }
 }
 
+// skip the text typing effect
 function skip_text() {
     let intro_white = document.getElementById('intro-white-p');
     if (game_page_language == 'german') {
@@ -712,9 +765,4 @@ function skip_text() {
         intro_white.innerHTML = text_text;
         text_l = text_text.length;
     }
-}
-
-function los2() {
-    let asf = document.querySelectorAll('.one-pokemon-container');
-    console.log(asf.length)
 }

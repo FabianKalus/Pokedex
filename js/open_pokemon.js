@@ -91,7 +91,7 @@ function open_renderType() {
     }
 }
 
-
+// render the backroundcolor of the open-pokemon defined by their type
 function open_renderBackgroundcolor() {
     let mainType = openCurrentPokemon['types'][0]['type']['name'];
     if (mainType == 'grass') {
@@ -141,6 +141,7 @@ function open_renderBackgroundcolor() {
     }
 }
 
+// render the open-pokemon about text / numbers
 function open_render_pokemon_about() {
     let aboutInfos = document.getElementById('open-content-bottom-content');
     big_border_for_active('about-header');
@@ -148,6 +149,7 @@ function open_render_pokemon_about() {
     translate_open_render_pokemon_about();
 }
 
+// render the open-pokemon about text / numbers HTML
 function open_render_pokemon_aboutHTMLCode(aboutInfos) {
     aboutInfos.innerHTML = `
     <div class="about-divs">
@@ -164,6 +166,7 @@ function open_render_pokemon_aboutHTMLCode(aboutInfos) {
     </div>`
 }
 
+// render open-pokemon basestats
 function open_render_pokemon_basestats() {
     let baseStats = document.getElementById('open-content-bottom-content');
     big_border_for_active('basestats-header');
@@ -172,6 +175,7 @@ function open_render_pokemon_basestats() {
     setTimeout(rendercoloredBar, 250);
 }
 
+//  render open-pokemon basestats HTML Code
 function open_render_pokemon_basestatsHTMLCode(baseStats) {
     baseStats.innerHTML = '';
     for (let j = 0; j < 6; j++) {
@@ -189,6 +193,7 @@ function open_render_pokemon_basestatsHTMLCode(baseStats) {
     }
 }
 
+// render open-pokemon stats numbers
 function renderStats() {
     for (let j = 0; j < 6; j++) {
         let stat = openCurrentPokemon['stats'][j]['base_stat'];
@@ -196,6 +201,7 @@ function renderStats() {
     }
 }
 
+// render the colored bar from the stats
 function rendercoloredBar() {
     let colorPosition;
     for (let k = 0; k < 6; k++) {
@@ -206,6 +212,7 @@ function rendercoloredBar() {
     }
 }
 
+// render open-pokemon attacks / moves
 function open_render_pokemon_moves() {
     let moves_container = document.getElementById('open-content-bottom-content');
     let moves = openCurrentPokemon['moves'];
@@ -220,6 +227,7 @@ function open_render_pokemon_moves() {
     }
 }
 
+// gives the open-pokemon active part a bigger border
 function big_border_for_active(a) {
     document.getElementById('about-header').classList.remove('big-border');
     document.getElementById('basestats-header').classList.remove('big-border');
@@ -228,6 +236,7 @@ function big_border_for_active(a) {
     document.getElementById(a).classList.add('big-border');
 }
 
+// close open pokemon
 function close_open_pokemon() {
     document.getElementById('open-container').classList.add('d-none');
 }
