@@ -411,46 +411,6 @@
     position: relative;
 }
 
-.white-board {
-    background-color: white;
-    height: 150px;
-    width: 150px;
-    position: absolute;
-    top: -140px;
-    right: calc(-100% - 50px);
-    z-index: 2;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    overflow: auto;
-    padding-left: 15px;
-    font-size: 14px;
-}
-
-.help-white-board {
-    background-color: white;
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    top: -15px;
-    right: -30px;
-    border-top-left-radius: 1000px;
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 1000px;
-}
-
-#white-board1,
-#white-board2,
-#white-board4,
-#white-board5 {
-    height: 100px;
-    top: -90px;
-}
-
 .not-usable {
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 10;
