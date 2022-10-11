@@ -1,0 +1,789 @@
+.game-content-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    top: 0;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding: 0;
+    padding-block-start: 0;
+    padding-block-end: 0;
+}
+
+.game-content-top-container {
+    position: relative;
+}
+
+.gameboy-container {
+    position: relative;
+    background-color: black;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    transform: translate(-50%, 0);
+    width: 70vw;
+    margin: 0;
+}
+
+.game-pokedex-container {
+    position: relative;
+    top: 120px;
+    background-color: red;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 500px;
+    width: 320px;
+    border: 3px solid gray;
+    border-bottom-right-radius: 20px;
+    box-shadow: 2px 2px 2px 2px white;
+}
+
+.blue-circle {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    height: 28px;
+    width: 28px;
+    background-color: rgb(19, 19, 211);
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.green-circle {
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    height: 28px;
+    width: 28px;
+    background-color: rgb(98, 199, 40);
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.yellow-circle {
+    position: absolute;
+    top: 20px;
+    right: 110px;
+    height: 28px;
+    width: 28px;
+    background-color: yellow;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.control-pad-up {
+    position: absolute;
+    bottom: 129px;
+    left: 70px;
+    object-fit: cover;
+    height: 24px;
+    width: 24px;
+}
+
+.control-pad-center {
+    position: absolute;
+    bottom: 106px;
+    left: 70px;
+    object-fit: cover;
+    height: 24px;
+    width: 24px;
+    background-color: #000000;
+}
+
+.control-pad-down {
+    background-color: black;
+    position: absolute;
+    bottom: 84px;
+    left: 70px;
+    object-fit: cover;
+    height: 24px;
+    width: 24px;
+    transform: rotate(180deg);
+}
+
+.control-pad-left {
+    position: absolute;
+    bottom: 106px;
+    left: 48px;
+    object-fit: cover;
+    transform: rotate(270deg);
+    height: 24px;
+    width: 24px;
+}
+
+.control-pad-right {
+    position: absolute;
+    bottom: 106px;
+    left: 93px;
+    object-fit: cover;
+    transform: rotate(90deg);
+    height: 24px;
+    width: 24px;
+}
+
+.control-pad-up img {
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.control-pad-right img {
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.control-pad-left img {
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.control-pad-down img {
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.pokedex-btn-a-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 50px;
+    right: 30px;
+    color: rgb(53, 53, 53);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.pokedex-btn-b-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 30px;
+    right: 90px;
+    color: rgb(53, 53, 53);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.pokedex-btn {
+    height: 32px;
+    width: 32px;
+    background-color: rgb(49, 13, 85);
+    border-radius: 30px;
+    border: 1.5px solid black;
+    box-shadow: 2px 2px 2px 2px black;
+}
+
+.life-container {
+    height: 100%;
+    width: 200px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(0, 0);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/pokemon-gefeb8dc21_19202.jpg');
+}
+
+.joker-container {
+    height: 100%;
+    width: 200px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(0, 0);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/pokemon-gefeb8dc21_19202.jpg');
+}
+
+.joker-image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 80vh;
+}
+
+.joker-image {
+    height: 60px;
+    width: 120px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.life-image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 80vh;
+}
+
+.life-image {
+    height: 60px;
+    width: 120px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.link-index {
+    text-decoration: none;
+    position: fixed;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.link-index img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.link-index h1 {
+    font-size: 40px;
+}
+
+.header-pokemaster {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 1;
+}
+
+.black-sreen {
+    background-color: black;
+    width: 260px;
+    height: 170px;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.solution-container {
+    background-color: rgb(30, 83, 30);
+    width: 260px;
+    height: 170px;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.solution-questionmark {
+    width: 170px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.solution-pixel {
+    width: 0px;
+    height: 150px;
+    z-index: 2;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+@keyframes movedown {
+    0% {
+        margin-bottom: 0;
+    }
+    100% {
+        margin-bottom: -100vh;
+    }
+}
+
+.game-searchfield-container {
+    position: absolute;
+    left: 50%;
+    top: 260px;
+    transform: translate(-50%, 0);
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 232px;
+    background-color: black;
+    border: 2px solid black;
+    height: 36px;
+}
+
+#game-searchfield {
+    outline: none;
+    background-color: black;
+    color: white;
+    height: 30px;
+    border: none;
+}
+
+#game-searchfield::placeholder {
+    color: white;
+}
+
+.game-search-image {
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.game-all-pokemon-container {
+    /* margin-top: 10vh; */
+    margin-left: 10vw;
+    margin-right: 10vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.overlay-container {
+    position: relative;
+    height: 280px;
+    width: 200px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.overlay-image-container {
+    height: 286px;
+    width: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-image {
+    height: 240px;
+    width: 160px;
+    object-fit: contain;
+}
+
+.one-life-container {
+    z-index: 2;
+}
+
+.joker-undercontainer {
+    position: relative;
+}
+
+.white-board {
+    background-color: white;
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: -140px;
+    right: calc(-100% - 50px);
+    z-index: 2;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: auto;
+    padding-left: 15px;
+    font-size: 14px;
+}
+
+.help-white-board {
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: -15px;
+    right: -30px;
+    border-top-left-radius: 1000px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 1000px;
+}
+
+#white-board1,
+#white-board2,
+#white-board4,
+#white-board5 {
+    height: 100px;
+    top: -90px;
+}
+
+.not-usable {
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+    height: 110px;
+    width: 120px;
+    position: absolute;
+    top: -10px;
+}
+
+.joker-name {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    font-weight: bold;
+}
+
+.joker-name p {
+    color: white;
+    background-color: transparent;
+    border: 3px solid silver;
+    padding: 1px 6px;
+    border-radius: 0px;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    font-size: 12px;
+    box-shadow: 2px 2px 2px 2px white;
+}
+
+.choose-language-container {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    z-index: 101;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-flag-container {
+    height: 30vh;
+    width: 30vw;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 30px;
+}
+
+.game-flag {
+    height: 25px;
+    width: 45px;
+    object-fit: cover;
+    cursor: pointer;
+    margin: 5px;
+    border: 2px solid black;
+}
+
+.game-flag-text-container p {
+    margin-block-end: 0;
+    margin-block-start: 0;
+    font-weight: bold;
+}
+
+.game-flag-text-container {
+    margin-top: 3vh;
+}
+
+.game-flag-undercontainer {
+    margin-bottom: 3vh;
+}
+
+.intro-container {
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-image: url('../img/medicine-gd204c0a2e_1280.jpg');
+    margin: 0;
+    padding: 0;
+}
+
+.intro-man {
+    position: absolute;
+    bottom: 0;
+    left: 15vw;
+    height: 75vh;
+}
+
+.intro-speachbubble {
+    position: absolute;
+    bottom: 70vh;
+    left: calc(15vw + 280px);
+    height: 35vh;
+}
+
+.bubble {
+    position: absolute;
+    background: #f1eeee;
+    color: #000000;
+    font-family: Arial;
+    font-size: 16px;
+    box-shadow: 5px 5px 2px 0px #A3A3A3;
+    text-align: center;
+    width: 274px;
+    height: 155px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.bubble:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    z-index: 1;
+    border-style: solid;
+    border-width: 33px 24px 0 0;
+    border-color: #f1eeee transparent transparent transparent;
+    bottom: -33px;
+    left: 10%;
+    margin-left: -12px;
+}
+
+.intro-white {
+    position: absolute;
+    bottom: 72vh;
+    left: 33.2vw;
+    height: 20vh;
+    width: 15vw;
+    background-color: white;
+}
+
+.intro-white p {
+    margin-left: 10px;
+    margin-block-start: 0;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.next-btn {
+    background-color: gray;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-weight: bold;
+    text-align: center;
+    width: 70px;
+    padding: 2px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.win-container {
+    position: fixed;
+    top: 0;
+    z-index: 110;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    object-fit: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10vh;
+    margin-bottom: 10vh;
+}
+
+.win-image {
+    height: 90vh;
+    width: auto;
+    object-fit: contain;
+    z-index: 111;
+    position: absolute;
+    bottom: 0;
+}
+
+.win-container h1 {
+    font-size: 100px;
+}
+
+.lose-container {
+    position: fixed;
+    top: 0;
+    z-index: 110;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../img/question-mark-gb0a1eab35_1280.png);
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10vh;
+    margin-bottom: 10vh;
+}
+
+.lose-container h1 {
+    font-size: 100px;
+}
+
+.retry-btn {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 6vh;
+    padding: 5px 10px;
+    background-color: green;
+    border: 4px solid black;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .game-content-container {
+        width: 100vw;
+        margin: 0;
+    }
+    .joker-container {
+        left: 0;
+        top: 640px;
+        width: 100vw;
+        transform: translate(0, 0);
+        background-image: none;
+        height: 100px;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .joker-image-container {
+        flex-direction: row;
+        width: 100vw;
+        height: 100px;
+    }
+    .not-usable {
+        width: 65px;
+        height: 70px;
+        top: 10px;
+    }
+    .joker-image {
+        width: 50px;
+        height: 35px;
+    }
+    .joker-name {
+        width: auto;
+    }
+    .joker-name p {
+        font-size: 9px;
+        box-shadow: 1px 1px 1px 1px white;
+        font-weight: 500;
+        border: 2px solid silver;
+    }
+    .joker-undercontainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .life-container {
+        left: 0;
+        top: 735px;
+        width: 100vw;
+        transform: translate(0, 0);
+        height: 100px;
+    }
+    .life-image-container {
+        flex-direction: row;
+        width: 100vw;
+        height: 100px;
+    }
+    .one-life-container img {
+        height: 40px;
+        width: 40px;
+    }
+    .header-pokemaster {
+        font-size: 45px;
+        left: 50%;
+        width: 70vw;
+        text-align: center;
+    }
+    .gameboy-container {
+        width: 100vw;
+    }
+    .game-flag-container {
+        width: 200px;
+    }
+    .intro-man {
+        left: -20vw;
+    }
+    .game-all-pokemon-container {
+        margin-left: 0px;
+        margin-right: 00px;
+        width: 100vw;
+        position: relative;
+        top: 200px;
+    }
+    .one-pokemon-container {
+        width: 170px;
+    }
+    .overlay-container {
+        width: 170px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .overlay-image-container {
+        width: 160px;
+        margin-left: 10px;
+    }
+    .overlay-image {
+        width: 140px;
+    }
+    .game-pokedex-header {
+        display: none;
+    }
+    .link-index {
+        z-index: 1000;
+        top: 25px;
+        left: 10px;
+    }
+    .intro-speachbubble {
+        left: auto;
+        right: 10px;
+        bottom: 77vh;
+        width: 200px;
+        height: 130px;
+    }
+}
+
+#body2 {
+    overflow: hidden;
+}

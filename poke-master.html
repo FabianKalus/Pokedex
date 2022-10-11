@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/poke_master.css">
+    <script src="./js/german.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/open_pokemon.js"></script>
+    <script src="./js/render_open_evolution.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/poke_master.js"></script>
+
+</head>
+
+<body id="body2">
+    <div class="game-content-container">
+        <a id="link-index" class="link-index" href="./index.html">
+            <img src="./img/back-g0f7f00051_640.png">
+            <h1 class="game-pokedex-header">Pokedex</h1>
+        </a>
+        <div class="game-content-top-container">
+            <h1 class="header-pokemaster">Poke-Master</h1>
+        </div>
+        <div class="gameboy-container">
+            <div class="game-pokedex-container">
+                <div class="blue-circle"></div>
+                <div class="green-circle"></div>
+                <div class="yellow-circle"></div>
+                <div class="control-pad-up">
+                    <img src="./img/arrow-154-48.png">
+                </div>
+                <div class="control-pad-right">
+                    <img src="./img/arrow-154-48.png">
+                </div>
+                <div class="control-pad-down">
+                    <img src="./img/arrow-154-48.png">
+                </div>
+                <div class="control-pad-left">
+                    <img src="./img/arrow-154-48.png">
+                </div>
+                <div class="control-pad-center"></div>
+                <div class="pokedex-btn-a-container">
+                    <div class="pokedex-btn">
+                    </div>
+                    <p class="pokedex-btn-text">A</p>
+                </div>
+                <div class="pokedex-btn-b-container">
+                    <div class="pokedex-btn">
+                    </div>
+                    <p class="pokedex-btn-text">B</p>
+                </div>
+                <div class="black-sreen"></div>
+                <div class="solution-container" id="solution-container">
+                    <img src="./img/question-mark-gd91fa0596_640.png" class="solution-questionmark" id="solution-questionmark">
+                </div>
+                <div class="game-searchfield-container">
+                    <input type="text" id="game-searchfield" placeholder="Pokemon...">
+                    <img onclick="game_search_pokemon()" class="game-search-image" src="./img/pokemon-g7bf1f5f07_640.png">
+                </div>
+            </div>
+            <div class="life-container">
+                <div class="life-image-container">
+                    <div class="one-life-container">
+                        <img class="life-image-filled" id="life-image-filled5" src="./img/hearts-48.png">
+                        <img class="life-image-unfilled d-none" id="life-image-unfilled5" src="./img/favorite-3-48.png">
+                    </div>
+                    <div class="one-life-container">
+                        <img class="life-image-filled" id="life-image-filled4" src="./img/hearts-48.png">
+                        <img class="life-image-unfilled d-none" id="life-image-unfilled4" src="./img/favorite-3-48.png">
+                    </div>
+                    <div class="one-life-container">
+                        <img class="life-image-filled" id="life-image-filled3" src="./img/hearts-48.png">
+                        <img class="life-image-unfilled d-none" id="life-image-unfilled3" src="./img/favorite-3-48.png">
+                    </div>
+                    <div class="one-life-container">
+                        <img class="life-image-filled" id="life-image-filled2" src="./img/hearts-48.png">
+                        <img class="life-image-unfilled d-none" id="life-image-unfilled2" src="./img/favorite-3-48.png">
+                    </div>
+                    <div class="one-life-container">
+                        <img class="life-image-filled" id="life-image-filled1" src="./img/hearts-48.png">
+                        <img class="life-image-unfilled d-none" id="life-image-unfilled1" src="./img/favorite-3-48.png">
+                    </div>
+                </div>
+            </div>
+            <div class="joker-container">
+                <div class="joker-image-container">
+                    <div class="joker-undercontainer">
+                        <img onclick="joker_one_type(1)" id="joker-image1" class="joker-image" src="./img/man-ge177bd83c_6402.png">
+                        <div class="not-usable d-none" id="joker-image-container1"></div>
+                        <div id="white-board1" class="white-board d-none"></div>
+                        <div id="help-white-board1" class="help-white-board d-none"></div>
+                        <div class="joker-name">
+                            <p>TYPE</p>
+                        </div>
+                    </div>
+                    <div class="joker-undercontainer">
+                        <img onclick="joker_one_type(2)" id="joker-image2" class="joker-image" src="./img/man-ge177bd83c_6402.png">
+                        <div class="not-usable d-none" id="joker-image-container2"></div>
+                        <div id="white-board2" class="white-board d-none"></div>
+                        <div id="help-white-board2" class="help-white-board d-none"></div>
+                        <div class="joker-name">
+                            <p>TYPE</p>
+                        </div>
+                    </div>
+                    <div class="joker-undercontainer">
+                        <img onclick="joker_all_types(3)" id="joker-image3" class="joker-image" src="./img/man-ge177bd83c_6402.png">
+                        <div class="not-usable d-none" id="joker-image-container3"></div>
+                        <div id="white-board3" class="white-board d-none"></div>
+                        <div id="help-white-board3" class="help-white-board d-none"></div>
+                        <div class="joker-name">
+                            <p>ALL TYPES</p>
+                        </div>
+                    </div>
+                    <div class="joker-undercontainer">
+                        <img onclick="joker_left_pokemon_name(4)" id="joker-image4" class="joker-image" src="./img/man-ge177bd83c_6402.png">
+                        <div class="not-usable d-none" id="joker-image-container4"></div>
+                        <div id="white-board4" class="white-board d-none"></div>
+                        <div id="help-white-board4" class="help-white-board d-none"></div>
+                        <div class="joker-name">
+                            <p>NAME</p>
+                        </div>
+                    </div>
+                    <div class="joker-undercontainer">
+                        <img onclick="joker_left_pokemon_name(5)" id="joker-image5" class="joker-image" src="./img/man-ge177bd83c_6402.png">
+                        <div class="not-usable d-none" id="joker-image-container5"></div>
+                        <div id="white-board5" class="white-board d-none"></div>
+                        <div id="help-white-board5" class="help-white-board d-none"></div>
+                        <div class="joker-name">
+                            <p>NAME</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="game-all-pokemon-container" id="game-all-pokemon-container">
+    </div>
+    <div id="go-up-container" onclick="scroll_to_top()" class="go-up-container d-none">
+        <img class="go-up-ballon" src="./img/balloons-g1b2c7bcbd_640.png">
+        <img class="go-up-pikachu" src="./img/pokemon-g69b990b2f_640.png">
+    </div>
+    <div class="intro-container" id="intro-container">
+        <img class="intro-man" src="./img/man-g94cb3a5e3_640.png">
+        <div class="bubble intro-speachbubble" id="intro-white">
+            <p id="intro-white-p"></p>
+            <div onclick="next_text()" id="next-btn" class="next-btn d-none">NEXT</div>
+            <div onclick="skip_text()" id="skip-btn" class="next-btn">SKIP</div>
+        </div>
+    </div>
+    <div class="choose-language-container" id="choose-language-container">
+        <div class="game-flag-container">
+            <div class="game-flag-text-container">
+                <p>Choose language /</p>
+                <p>Sprache wählen</p>
+            </div>
+            <div class="game-flag-undercontainer">
+                <img class="game-flag" onclick="game_change_to_german()" src="./img/germany-g7663b9cc8_640.png">
+                <img class="game-flag" onclick="game_change_to_english()" src="./img/england-g7236d1749_640.png">
+            </div>
+        </div>
+    </div>
+    <div class="lose-container d-none" id="lose-container">
+        <h1>You LOSE</h1>
+        <a href="./poke-master.html"><button class="retry-btn">RETRY</button></a>
+    </div>
+    <div class="win-container d-none" id="win-container">
+        <h1>You are a Poke-Master</h1>
+        <img class="win-image" src="./img/winner-g241f8c52f_1280.png">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/german.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/open_pokemon.js"></script>
+    <script src="./js/render_open_evolution.js"></script>
+    <script src="./js/search.js"></script>
+
+</head>
+
+<body id="body1" onload="loadPage()">
+
+    <div class="header">
+        <a href="./index.html">
+            <h1 onclick="los()">Pokedex</h1>
+        </a>
+        <div class="searchfield-container">
+            <img class="searchfield-image" onclick="search_pokemon()" src="./img/pokemon-g7bf1f5f07_640.png">
+            <input type="text" id="searchfield-input" class="searchfield-input" placeholder="Search by Name">
+        </div>
+        <a href="./poke-master.html">
+            <div class="poke-master-container">
+                <p>Poke-Master</p>
+                <stan>Can you catch them all?</stan>
+            </div>
+        </a>
+    </div>
+    <div class="link-container">
+
+
+    </div>
+    <div class="all-pokemon-container" id="all-pokemon-container">
+    </div>
+    <div class="flag-container">
+        <img class="flag" onclick="change_to_german()" src="./img/germany-g7663b9cc8_640.png">
+        <img class="flag" onclick="change_to_english()" src="./img/england-g7236d1749_640.png">
+    </div>
+
+    <div id="open-container" class="open-container d-none"> </div>
+    <div id="go-up-container" onclick="scroll_to_top()" class="go-up-container d-none">
+        <img class="go-up-ballon" src="./img/balloons-g1b2c7bcbd_640.png">
+        <img class="go-up-pikachu" src="./img/pokemon-g69b990b2f_640.png">
+    </div>
+
+
+
+</body>
+
+</html>
