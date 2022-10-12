@@ -79,7 +79,8 @@ async function game_loadAllPokemon(start, end) {
 
 // render the rest images that are over the pokemon, that are not answered
 async function rest_render_overlay_images() {
-    for (let oi = 0; oi < 80; oi++) {
+    for (let oi = 80; oi < 151; oi++) {
+
         document.getElementById('game-all-pokemon-container').innerHTML += `
         <div class="overlay-container" id="overlay-container${oi}">
             <div class="overlay-image-container" id="overlayimage-container${oi}">
@@ -125,7 +126,7 @@ function game_renderOnePokemonHTML(x) {
 
 // render the images that are over the pokemon, that are not answered
 function render_overlay_images() {
-    for (let oi = 80; oi < 151; oi++) {
+    for (let oi = 0; oi < 80; oi++) {
         document.getElementById('game-all-pokemon-container').innerHTML += `
         <div class="overlay-container" id="overlay-container${oi}">
             <div class="overlay-image-container" id="overlayimage-container${oi}">
