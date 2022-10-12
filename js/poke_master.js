@@ -309,14 +309,6 @@ async function game_search_pokemon() {
     let search_field_value = search_field.value.toLowerCase();
     let find_pokemon = false;
 
-    // checks the rest of the life´s you have and let the life´s disaprear if the answer was false
-    // for (let wh = 1; wh < 6; wh++) {
-    //     if (document.getElementById(`white-board${wh}`).classList.contains('d-none') == false) {
-    //         document.getElementById(`white-board${wh}`).classList.add('d-none');
-    //         document.getElementById(`help-white-board${wh}`).classList.add('d-none');
-    //     }
-    // }
-
     // checks language
     if (game_page_language == 'german') {
         if (search_field.value.length > 0) {
@@ -490,28 +482,10 @@ function joker_one_type(x) {
             type_element++;
         }
     }
-    // just_one_joker();
-    // document.getElementById(`white-board${x}`).classList.remove('d-none');
-    // document.getElementById(`help-white-board${x}`).classList.remove('d-none');
     translate_element_to_german();
     alert(`${element}: ${type_element}`);
     used_joker(x);
 }
-
-// so you can just use one joker at once
-// function just_one_joker() {
-    // document.getElementById('white-board1').classList.add('d-none');
-    // document.getElementById('white-board2').classList.add('d-none');
-    // document.getElementById('white-board3').classList.add('d-none');
-    // document.getElementById('white-board4').classList.add('d-none');
-    // document.getElementById('white-board5').classList.add('d-none');
-
-    // document.getElementById('help-white-board1').classList.add('d-none');
-    // document.getElementById('help-white-board2').classList.add('d-none');
-    // document.getElementById('help-white-board3').classList.add('d-none');
-    // document.getElementById('help-white-board4').classList.add('d-none');
-    // document.getElementById('help-white-board5').classList.add('d-none');
-// }
 
 // gives alle types of the pokemons that aren`t answered
 function joker_all_types(x) {
@@ -559,27 +533,22 @@ function joker_all_types(x) {
             type_ground++;
         }
     }
-    // document.getElementById('white-board3').classList.remove('d-none');
-    // // just_one_joker();
-    // document.getElementById('white-board3').classList.remove('d-none');
-    // document.getElementById('help-white-board3').classList.remove('d-none');
-    // document.getElementById('white-board3').innerHTML = 
     alert(`
-    <b>There are still missing following Pokemon first types:</b><br>
-    grass: ${type_grass}<br>
-    fire: ${type_fire}<br>
-    water: ${type_water}<br>
-    electric: ${type_electric}<br>
-    bug: ${type_bug}<br>
-    normal: ${type_normal}<br>
-    ground: ${type_ground}<br>
-    poison: ${type_poison}<br>
-    fairy: ${type_fairy}<br>
-    fighting: ${type_fighting}<br>
-    psychic: ${type_psychic}<br>
-    ghost: ${type_ghost}<br>
-    dragon: ${type_dragon}<br>
-    rock: ${type_rock}<br>   
+    There are still missing following Pokemon first types:
+    grass: ${type_grass}
+    fire: ${type_fire}
+    water: ${type_water}
+    electric: ${type_electric}
+    bug: ${type_bug}
+    normal: ${type_normal}
+    ground: ${type_ground}
+    poison: ${type_poison}
+    fairy: ${type_fairy}
+    fighting: ${type_fighting}
+    psychic: ${type_psychic}
+    ghost: ${type_ghost}
+    dragon: ${type_dragon}
+    rock: ${type_rock}   
    `);
     translate_joker_all_types();
     used_joker(x);
@@ -610,10 +579,6 @@ function joker_left_pokemon_name(x) {
         letters_left = letters_left + ' _';
     }
     let name_help = first_two + letters_left;
-    // just_one_joker();
-    // document.getElementById(`white-board${x}`).classList.remove('d-none');
-    // document.getElementById(`help-white-board${x}`).classList.remove('d-none');
-    // document.getElementById(`white-board${x}`).innerHTML = 
     alert(`
     ${name_help}`);
     used_joker(x);
@@ -766,4 +731,23 @@ function skip_text() {
         intro_white.innerHTML = text_text;
         text_l = text_text.length;
     }
+}
+
+//toggle the help image 
+function help_img() {
+    if(game_page_language == 'english') {
+        document.querySelector('.help-1').classList.toggle('d-none');
+    };
+    if(game_page_language == 'german') {
+        document.querySelector('.help-2').classList.toggle('d-none');
+    };
+}
+
+function help_img_mobil() {
+    if(game_page_language == 'english') {
+        document.querySelector('.help-3').classList.toggle('d-none');
+    };
+    if(game_page_language == 'german') {
+        document.querySelector('.help-4').classList.toggle('d-none');
+    };
 }

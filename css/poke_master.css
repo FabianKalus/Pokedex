@@ -39,6 +39,31 @@
     box-shadow: 2px 2px 2px 2px white;
 }
 
+.help-icon-container {
+    position: absolute;
+    z-index: 99;
+    top: 35px;
+    right: 35px;
+}
+
+.help-icon {
+    height: 70px;
+    width: 70px;
+    cursor: pointer;
+    display: block;
+}
+
+.help-icon-mobil {
+    height: 40x;
+    width: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+.help-icon:hover {
+    filter: brightness(1.25);
+}
+
 .blue-circle {
     position: absolute;
     top: 20px;
@@ -627,7 +652,17 @@
     cursor: pointer;
 }
 
-@media (max-width: 900px) {
+
+.help-1, .help-2, .help-3, .help-4 {
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+@media (max-width: 960px) {
     .game-content-container {
         width: 100vw;
         margin: 0;
@@ -741,6 +776,16 @@
         bottom: 77vh;
         width: 200px;
         height: 130px;
+    }
+    .help-icon {
+        display: none;
+    }
+    .help-icon-mobil {
+        display: block;
+    }
+    .help-icon-container {
+        top: 20px;
+        right: 20px;
     }
 }
 
